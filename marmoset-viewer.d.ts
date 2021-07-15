@@ -3,4 +3,132 @@ import Vue, { PluginFunction, VueConstructor } from 'vue'
 declare const MarmosetViewer: VueConstructor<Vue> & { install: PluginFunction<any> }
 export default MarmosetViewer
 
+/**
+ * Loads the Marmoset script asynchronously and only once.
+ * @return Promise that resolves when Marmoset is available.
+ */
 export declare function loadMarmoset(): Promise<void>
+
+/**
+ * The id of the Marmoset script tag.
+ */
+export declare const marmosetScriptId: String
+
+export declare interface Marmoset {
+  /**
+   * Embeds a viewer instance to the document body.
+   * @param src URL of the mview file.
+   * @param options Options for the viewer.
+   * @return Marmoset.WebViewer that has been embedded.
+   */
+  embed(src: string, options: Marmoset.WebViewerOptions): Marmoset.WebViewer
+
+  /**
+   * Fetches the thumbnail of a mview file. Request size will be around 64KB.
+   * @param src URL of the mview file.
+   * @param onLoad Callback that receives the fetched image.
+   * @param onError Callback for error scenarios.
+   * @param image Target image buffer. If not present, a new buffer will be created.
+   */
+  fetchThumbnail(src: string, onLoad: (image: any) => void, onError?: () => void, image?: any): void
+
+  /**
+   * Custom viewer URL. Must be set before any viewer instances are created.
+   */
+  hostURL?: string
+
+  /**
+   * Custom viewer logo URL. Must be set before any viewer instances are created.
+   */
+  hostImage?: string
+
+  /**
+   * Enable transparent background. Must be set before any viewer instances are created.
+   */
+  transparentBackground?: boolean
+
+  /**
+   * Hide the user interface. Must be set before any viewer instances are created.
+   */
+  noUserInterface?: boolean
+}
+
+export declare namespace Marmoset {
+  export class WebViewer {
+    /**
+     * Creates a Marmoset viewer with the given size and file.
+     * @param width Width of the viewer.
+     * @param height Height of the viewer.
+     * @param src URL of the mview file.
+     */
+    constructor(width: number, height: number, src: string)
+
+    /**
+     * HTMLDivElement containing the viewer.
+     */
+    domRoot: HTMLDivElement
+
+    /**
+     * Loads the scene immediately.
+     */
+    loadScene(): void
+
+    /**
+     * Callback that is called once the scene has been loaded.
+     */
+    onLoad?: () => void
+
+    /**
+     * Resizes the viewer instance using the given dimensions.
+     * @param width New width of the viewer.
+     * @param height New height of the viewer.
+     */
+    resize(width: number, height: number): void
+
+    /**
+     * Unloads the viewer instance and frees used resources.
+     */
+    unload(): void
+  }
+
+  /**
+   * Options for the Marmoset WebViewer.
+   */
+  export interface WebViewerOptions {
+    /**
+     * Width of the viewer instance.
+     */
+    width?: number
+
+    /**
+     * Height of the viewer instance.
+     */
+    height?: number
+
+    /**
+     * If true, the viewer instance loads the scene without user interaction.
+     */
+    autoStart?: boolean
+
+    /**
+     * If true, the viewer instance starts in fullscreen mode.
+     */
+    fullFrame?: boolean
+
+    /**
+     * If true, the viewer instance will wrap itself in a prebuilt HTML page.
+     */
+    pagePreset?: boolean
+
+    /**
+     * Thumbnail of the viewer instance.
+     */
+    thumbnailURL?: string
+  }
+}
+
+declare global {
+  interface Window {
+    marmoset: Marmoset & typeof Marmoset
+  }
+}

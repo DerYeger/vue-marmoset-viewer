@@ -1,14 +1,11 @@
 <template>
-  <div
-    ref="marmosetViewerHost"
-    class="marmoset-viewer-host"
-    :class="{ 'marmoset-viewer-host__responsive': responsive }"
-  />
+  <div ref="marmosetViewerHost" class="marmoset-viewer-host" :class="{ 'marmoset-viewer-host__responsive': responsive }" />
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "@vue/composition-api"
-import { loadMarmoset, marmosetDefaultOptions } from "@/marmoset"
+import { defineComponent } from '@vue/composition-api'
+import { loadMarmoset, marmosetViewerDefaultOptions } from '@/marmoset'
+import { Marmoset } from 'marmoset-viewer'
 
 export default defineComponent({
   props: {
@@ -16,11 +13,19 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    options: {
-      type: Object as PropType<Marmoset.WebViewerOptions>,
-      default: () => marmosetDefaultOptions,
+    width: {
+      type: Number,
+      default: marmosetViewerDefaultOptions.width,
+    },
+    height: {
+      type: Number,
+      default: marmosetViewerDefaultOptions.height,
     },
     responsive: {
+      type: Boolean,
+      default: false,
+    },
+    autoStart: {
       type: Boolean,
       default: false,
     },
@@ -35,12 +40,7 @@ export default defineComponent({
       return this.$refs.marmosetViewerHost as HTMLDivElement
     },
     viewer(): Marmoset.WebViewer {
-      const { width, height } = this.options
-      return new window.marmoset.WebViewer(
-        width ?? marmosetDefaultOptions.width,
-        height ?? marmosetDefaultOptions.height,
-        this.src
-      )
+      return new window.marmoset.WebViewer(this.width, this.height, this.src)
     },
   },
   mounted() {
@@ -59,13 +59,13 @@ export default defineComponent({
         this.resizeObserver = new ResizeObserver(() => this.onResize())
         this.resizeObserver.observe(this.viewerHost)
       }
+      if (this.autoStart) {
+        this.viewer.loadScene()
+      }
     },
     onResize() {
       try {
-        this.viewer.resize(
-          this.viewerHost.clientWidth,
-          this.viewerHost.clientHeight
-        )
+        this.viewer.resize(this.viewerHost.clientWidth, this.viewerHost.clientHeight)
       } catch (_) {
         // marmoset.js throws a typeError on resize
       }

@@ -31,8 +31,9 @@
 
 ## Features
 
-- ✨ **Dynamic**: Dynamically loads the Marmoset Viewer source code as soon as its rendered required.
+- ✨ **Dynamic**: Dynamically loads the Marmoset Viewer source code as soon as its required.
 - 📱 **Responsive**: Fully responsive. Supports touch controls.
+- ⚒️ **Manual access**: If required, directly access the Marmoset with provided type declarations.
 
 ## Installation
 
@@ -55,7 +56,7 @@ Vue.use(MarmosetViewer)
 
 ```vue
 <template>
-  <marmoset-viewer src="/file.mview" :options="{ width: 800, height: 600 }" />
+  <marmoset-viewer src="/file.mview" :width="800" :width="800" :auto-start="true" />
 </template>
 ```
 
@@ -71,26 +72,11 @@ If `responsive` is set to true, the component will fill the available space of i
 
 > Note: No property of the component is reactive.
 
-You can also call `loadMarmoset()` to load the script eagerly. Keep in mind, that this can only be done client-side, as it requires `document` to be available.
-
 ### Events
 
 - `load`: Emitted when the MarmosetViewer is done loading.
 - `unload`: Emitted when the MarmosetViewer has been unloaded before the component is destroyed.
 - `resize`: Emitted when the MarmosetViewer has been resized, because the `responsive` property is set to `true`.
-
-### Options
-
-The following options are available (taken from https://marmoset.co/posts/viewer-integration-guide/):
-
-| Type    | Name         | Default   | Description                                                                                                                                                                                              |
-|---------|--------------|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| number  | width        | 800       | Width of viewer frame in points. This setting is ignored in full frame mode.                                                                                                                             |
-| number  | height       | 600       | Height of viewer frame in points. This setting is ignored in full frame mode.                                                                                                                            |
-| boolean | autoStart    | false     | Starts the viewer loading process immediately upon load (user does not have to press the play button). Leaving this disabled can save bandwidth and page load time.                                      |
-| boolean | fullFrame    | false     | When enabled, stretches the viewer rectangle to fill the available frame (the containing window or iframe). This setting is ignored when the “pagePreset” option is enabled.                             |
-| boolean | pagePreset   | false     | When enabled, constructs a full standalone web page around the viewer, with a resizable frame. Useful for creating a simple, decent-looking presentation without having to construct a page yourself.    |
-| string  | thumbnailURL | undefined | If supplied, this image URL will be used for the load screen instead of the thumbnail extracted from the mview file. For best results, ensure that the given URL will not cause a cross-origin conflict. |
 
 ### Nuxt
 
@@ -112,6 +98,30 @@ export default {
   ],
 }
 ```
+
+### Manual usage
+
+In addition to the component, this library also allows for direct access of the Marmoset script.
+After the `Promise` returned by `loadMarmoset()` is resolved, the script can be accessed at `document.marmoset`.
+While the required types are included in this library, keep in mind that this can only be done client-side, as it requires `document` to be available.
+
+### Options
+
+The following options are available (taken from https://marmoset.co/posts/viewer-integration-guide/):
+
+| Type    | Name         | Default   | Description                                                                                                                                                                                              |
+|---------|--------------|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| number  | width        | 800       | Width of viewer frame in points. This setting is ignored in full frame mode.                                                                                                                             |
+| number  | height       | 600       | Height of viewer frame in points. This setting is ignored in full frame mode.                                                                                                                            |
+| boolean | autoStart    | false     | Starts the viewer loading process immediately upon load (user does not have to press the play button). Leaving this disabled can save bandwidth and page load time.                                      |
+
+In addition, the following options can be set when embedding a Marmoset viewer manually.
+
+| Type    | Name         | Default   | Description                                                                                                                                                                                              |
+|---------|--------------|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| boolean | fullFrame    | false     | When enabled, stretches the viewer rectangle to fill the available frame (the containing window or iframe). This setting is ignored when the “pagePreset” option is enabled.                             |
+| boolean | pagePreset   | false     | When enabled, constructs a full standalone web page around the viewer, with a resizable frame. Useful for creating a simple, decent-looking presentation without having to construct a page yourself.    |
+| string  | thumbnailURL | undefined | If supplied, this image URL will be used for the load screen instead of the thumbnail extracted from the mview file. For best results, ensure that the given URL will not cause a cross-origin conflict. |
 
 ## Development
 

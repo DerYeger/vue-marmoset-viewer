@@ -4,8 +4,8 @@
 
 import { mount } from '@vue/test-utils'
 import MarmosetViewer from '@/marmoset-viewer.vue'
-import * as marmoset from '@/marmoset'
 import flushPromises from 'flush-promises'
+import { loadMarmoset } from '@/marmoset'
 
 jest.mock('@/marmoset')
 
@@ -19,10 +19,12 @@ function withPx(value: number) {
 
 const unloadMock = jest.fn()
 const resizeMock = jest.fn()
+const loadSceneMock = jest.fn()
 
 class WebViewerMock {
   unload = unloadMock
   resize = resizeMock
+  loadScene = loadSceneMock
   domRoot: HTMLDivElement
   constructor(width: number, height: number, src: string) {
     const testDomRoot = document.createElement('div')
@@ -54,7 +56,7 @@ function mockResizeObserver() {
 describe('MarmosetViewer', () => {
   beforeAll(() => {
     // @ts-ignore
-    marmoset.loadMarmoset.mockResolvedValue(
+    loadMarmoset.mockResolvedValue(
       new Promise((resolve) => {
         Object.assign(global.window, {
           marmoset: {
@@ -74,7 +76,7 @@ describe('MarmosetViewer', () => {
     const wrapper = mount(MarmosetViewer, {
       propsData: {
         src: testFileName,
-        options,
+        ...options,
       },
     })
     await flushPromises()
@@ -143,5 +145,16 @@ describe('MarmosetViewer', () => {
     wrapper.destroy()
     expect(unobserveMock.mock.calls.length).toEqual(1)
     expect(wrapper.emitted().unload?.length).toBe(1)
+  })
+  it('supports autostart', async () => {
+    expect(loadSceneMock.mock.calls.length).toEqual(0)
+    mount(MarmosetViewer, {
+      propsData: {
+        src: testFileName,
+        autoStart: true,
+      },
+    })
+    await flushPromises()
+    expect(loadSceneMock.mock.calls.length).toEqual(1)
   })
 })

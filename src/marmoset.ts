@@ -1,11 +1,7 @@
-export const marmosetDefaultOptions: Required<Omit<Marmoset.WebViewerOptions, 'thumbnailURL'>> &
-  Pick<Marmoset.WebViewerOptions, 'thumbnailURL'> = {
+export const marmosetViewerDefaultOptions = {
   width: 800,
   height: 600,
   autoStart: false,
-  fullFrame: false,
-  pagePreset: false,
-  thumbnailURL: undefined,
 }
 
 export const marmosetScriptId = 'marmoset-script'
@@ -27,7 +23,6 @@ export function loadMarmoset(): Promise<void> {
     loadingInProgress = true
     const marmosetScript = document.createElement('script')
     marmosetScript.setAttribute('src', marmosetScriptUrl)
-    marmosetScript.async = false
     marmosetScript.id = marmosetScriptId
     marmosetScript.addEventListener('load', () => {
       loadingInProgress = false
