@@ -7,6 +7,9 @@
   <a href="https://www.npmjs.com/package/vue-marmoset-viewer">
     <img alt="NPM" src="https://img.shields.io/npm/v/vue-marmoset-viewer?logo=npm">
   </a>
+  <a href="https://codecov.io/gh/DerYeger/vue-marmoset-viewer">
+    <img alt="Coverage" src="https://codecov.io/gh/DerYeger/vue-marmoset-viewer/branch/master/graph/badge.svg?token=p35W6u2noe">
+  </a>
   <a href="https://lgtm.com/projects/g/DerYeger/vue-marmoset-viewer">
     <img alt="LGTM Grade" src="https://img.shields.io/lgtm/grade/javascript/github/DerYeger/vue-marmoset-viewer?logo=lgtm">
   </a>
@@ -68,6 +71,14 @@ If `responsive` is set to true, the component will fill the available space of i
 
 > Note: No property of the component is reactive.
 
+You can also call `loadMarmoset()` to load the script eagerly. Keep in mind, that this can only be done client-side, as it requires `document` to be available.
+
+### Events
+
+- `load`: Emitted when the MarmosetViewer is done loading.
+- `unload`: Emitted when the MarmosetViewer has been unloaded before the component is destroyed.
+- `resize`: Emitted when the MarmosetViewer has been resized, because the `responsive` property is set to `true`.
+
 ### Options
 
 The following options are available (taken from https://marmoset.co/posts/viewer-integration-guide/):
@@ -80,7 +91,6 @@ The following options are available (taken from https://marmoset.co/posts/viewer
 | boolean | fullFrame    | false     | When enabled, stretches the viewer rectangle to fill the available frame (the containing window or iframe). This setting is ignored when the “pagePreset” option is enabled.                             |
 | boolean | pagePreset   | false     | When enabled, constructs a full standalone web page around the viewer, with a resizable frame. Useful for creating a simple, decent-looking presentation without having to construct a page yourself.    |
 | string  | thumbnailURL | undefined | If supplied, this image URL will be used for the load screen instead of the thumbnail extracted from the mview file. For best results, ensure that the given URL will not cause a cross-origin conflict. |
-
 
 ### Nuxt
 
