@@ -33,26 +33,23 @@ export default defineComponent({
   data() {
     return {
       resizeObserver: undefined as ResizeObserver | undefined,
+      viewer: undefined as Marmoset.WebViewer | undefined,
     }
   },
   computed: {
     viewerHost(): HTMLDivElement {
       return this.$refs.marmosetViewerHost as HTMLDivElement
     },
-    viewer(): Marmoset.WebViewer {
-      return new window.marmoset.WebViewer(this.width, this.height, this.src)
-    },
   },
   mounted() {
-    loadMarmoset().then(() => this.initializeViewer())
+    loadMarmoset().then(() => this.loadViewer())
   },
   beforeDestroy() {
-    this.resizeObserver?.unobserve(this.viewerHost)
-    this.viewer.unload()
-    this.$emit('unload')
+    this.unloadViewer()
   },
   methods: {
-    initializeViewer() {
+    loadViewer() {
+      this.viewer = new window.marmoset.WebViewer(this.width, this.height, this.src)
       this.viewerHost.appendChild(this.viewer.domRoot)
       this.viewer.onLoad = () => this.$emit('load')
       if (this.responsive) {
@@ -63,15 +60,56 @@ export default defineComponent({
         this.viewer.loadScene()
       }
     },
+    unloadViewer() {
+      if (this.viewer === undefined) {
+        return
+      }
+      this.resizeObserver?.unobserve(this.viewerHost)
+      this.viewerHost.removeChild(this.viewer.domRoot)
+      this.viewer.unload()
+      this.$emit('unload')
+    },
+    reloadViewer() {
+      this.unloadViewer()
+      this.loadViewer()
+    },
     onResize() {
       try {
-        this.viewer.resize(this.viewerHost.clientWidth, this.viewerHost.clientHeight)
+        this.viewer?.resize(this.viewerHost.clientWidth, this.viewerHost.clientHeight)
       } catch (_) {
         // marmoset.js throws a typeError on resize
       }
       this.$emit('resize')
     },
+    resize(width: number, height: number) {
+      if (this.responsive) {
+        return
+      }
+      try {
+        this.viewer?.resize(width, height)
+      } catch (_) {
+        // marmoset.js throws a typeError on resize
+      }
+      this.$emit('resize')
+    }
   },
+  watch: {
+    src() {
+      this.reloadViewer()
+    },
+    width() {
+      this.resize(this.width, this.height)
+    },
+    height() {
+      this.resize(this.width, this.height)
+    },
+    responsive() {
+      this.reloadViewer()
+    },
+    autoStart() {
+      this.reloadViewer()
+    },
+  }
 })
 </script>
 

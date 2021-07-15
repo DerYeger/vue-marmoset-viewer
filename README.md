@@ -33,6 +33,7 @@
 
 - ✨ **Dynamic**: Dynamically loads the Marmoset Viewer source code as soon as its required.
 - 📱 **Responsive**: Fully responsive. Supports touch controls.
+- 🔁 **Reactive**: Reacts to property changes.
 - ⚒️ **Manual access**: If required, directly access the Marmoset with provided type declarations.
 
 ## Installation
@@ -56,7 +57,7 @@ Vue.use(MarmosetViewer)
 
 ```vue
 <template>
-  <marmoset-viewer src="/file.mview" :width="800" :width="800" :auto-start="true" />
+  <marmoset-viewer src="/file.mview" :width="800" :height="600" :auto-start="true" />
 </template>
 ```
 
@@ -70,13 +71,13 @@ or
 
 If `responsive` is set to true, the component will fill the available space of its parent.
 
-> Note: No property of the component is reactive.
+> Note: All properties of the component are reactive. Changes, except `width` or `height`, trigger a recreation of the underlying viewer.
 
 ### Events
 
-- `load`: Emitted when the MarmosetViewer is done loading.
-- `unload`: Emitted when the MarmosetViewer has been unloaded before the component is destroyed.
-- `resize`: Emitted when the MarmosetViewer has been resized, because the `responsive` property is set to `true`.
+- `load`: Emitted when the underlying viewer is done loading.
+- `unload`: Emitted when an underlying viewer has been unloaded, because the component is destroyed or recreated.
+- `resize`: Emitted when the underlying viewer has been resized manually or automatically, when the `responsive` property is set to `true`.
 
 ### Nuxt
 
