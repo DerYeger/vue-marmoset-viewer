@@ -21,7 +21,6 @@ export default Vue.extend({
 
 <template>
   <div id="app">
-    <marmoset-viewer :src="src" :auto-start="autoStart" :responsive="responsive" :width="+width" :height="+height" />
     <section>
       <label>Src</label>
       <input type="text" v-model="src">
@@ -42,6 +41,7 @@ export default Vue.extend({
       <label>Height</label>
       <input type="range" min="300" max="1200" v-model="height">
     </section>
+    <marmoset-viewer :src="src" :auto-start="autoStart" :responsive="responsive" :width="+width" :height="+height" />
   </div>
 </template>
 

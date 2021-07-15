@@ -31,7 +31,8 @@
   ],
   "private": false,
   "scripts": {
-    "serve": "vue-cli-service serve dev/serve.ts",
+    "example:serve": "vue-cli-service serve example/serve.ts",
+    "example:build": "vue-cli-service build example/serve.ts --dest=docs --no-clean",
     "test": "jest",
     "build": "cross-env NODE_ENV=production rollup --config build/rollup.config.js",
     "build:ssr": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format cjs",
