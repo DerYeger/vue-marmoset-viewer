@@ -2,13 +2,13 @@
   <div
     ref="marmosetViewerHost"
     class="marmoset-viewer-host"
-    :class="{ responsive: responsive }"
+    :class="{ 'marmoset-viewer-host__responsive': responsive }"
   />
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "@vue/composition-api";
-import { loadMarmoset, marmosetDefaultOptions } from "@/marmoset";
+import { defineComponent, PropType } from "@vue/composition-api"
+import { loadMarmoset, marmosetDefaultOptions } from "@/marmoset"
 
 export default defineComponent({
   props: {
@@ -44,15 +44,17 @@ export default defineComponent({
     },
   },
   mounted() {
-    loadMarmoset(() => this.initializeViewer())
+    loadMarmoset().then(() => this.initializeViewer())
   },
   beforeDestroy() {
     this.resizeObserver?.unobserve(this.viewerHost)
     this.viewer.unload()
+    this.$emit('unload')
   },
   methods: {
     initializeViewer() {
       this.viewerHost.appendChild(this.viewer.domRoot)
+      this.viewer.onLoad = () => this.$emit('load')
       if (this.responsive) {
         this.resizeObserver = new ResizeObserver(() => this.onResize())
         this.resizeObserver.observe(this.viewerHost)
@@ -67,6 +69,7 @@ export default defineComponent({
       } catch (_) {
         // marmoset.js throws a typeError on resize
       }
+      this.$emit('resize')
     },
   },
 })
@@ -78,7 +81,7 @@ export default defineComponent({
   height: fit-content;
 }
 
-.responsive {
+.marmoset-viewer-host__responsive {
   width: 100%;
   height: 99%;
 }
