@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/DerYeger/vue-marmoset-viewer/compare/v1.2.0...v1.3.0) (2021-07-15)
+
+
+### Features
+
+* make component properties responsive ([6a1f3ff](https://github.com/DerYeger/vue-marmoset-viewer/commit/6a1f3ff797393cedd8a25622353a8da210253b3a))
+
 # [1.2.0](https://github.com/DerYeger/vue-marmoset-viewer/compare/v1.1.0...v1.2.0) (2021-07-15)
 
 
