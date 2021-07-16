@@ -34,7 +34,7 @@
 - ✨ **Dynamic**: Dynamically loads the Marmoset Viewer source code as soon as its required.
 - 📱 **Responsive**: Fully responsive. Supports touch controls.
 - 🔁 **Reactive**: Reacts to property changes.
-- ⚒️ **Manual access**: If required, directly access the Marmoset with provided type declarations.
+- ⚒️ **Manual access**: If required, directly access the Marmoset script with provided type declarations.
 
 ## Links
 

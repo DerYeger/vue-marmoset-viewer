@@ -4,7 +4,7 @@
   "description": "A responsive and configurable Marmoset Viewer component for Vue.",
   "license": "MIT",
   "repository": "github:DerYeger/vue-marmoset-viewer",
-  "homepage": "https://vue-marmoset-viewer.yeger.eu/",
+  "homepage": "https://vue-marmoset-viewer.yeger.eu",
   "bugs": {
     "url": "https://github.com/DerYeger/vue-marmoset-viewer/issues"
   },
