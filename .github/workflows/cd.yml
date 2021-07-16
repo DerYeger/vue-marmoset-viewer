@@ -36,5 +36,6 @@ jobs:
           branch: gh-pages
           folder: ./demo-dist
           clean: true
+          single-commit: true
           git-config-name: Jan Müller
           git-config-email: janmueller3698@gmail.com
