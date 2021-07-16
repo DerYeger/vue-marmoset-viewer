@@ -36,6 +36,11 @@
 - 🔁 **Reactive**: Reacts to property changes.
 - ⚒️ **Manual access**: If required, directly access the Marmoset with provided type declarations.
 
+## Links
+
+- [Marmoset Viewer](https://marmoset.co/toolbag/viewer/)
+- [Demo](https://vue-marmoset-viewer.yeger.eu/)
+
 ## Installation
 
 ```bash
@@ -135,6 +140,12 @@ $ yarn build
 
 # lint project files
 $ yarn lint
+
+# serve demo
+$ yarn demo:serve
+
+# build demo for production
+$ yarn demo:build
 ```
 
 ## Disclaimer

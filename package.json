@@ -4,7 +4,7 @@
   "description": "A responsive and configurable Marmoset Viewer component for Vue.",
   "license": "MIT",
   "repository": "github:DerYeger/vue-marmoset-viewer",
-  "homepage": "https://github.com/DerYeger/vue-marmoset-viewer",
+  "homepage": "https://vue-marmoset-viewer.yeger.eu/",
   "bugs": {
     "url": "https://github.com/DerYeger/vue-marmoset-viewer/issues"
   },
@@ -31,8 +31,8 @@
   ],
   "private": false,
   "scripts": {
-    "example:serve": "vue-cli-service serve example/serve.ts",
-    "example:build": "vue-cli-service build example/serve.ts --dest=docs --no-clean",
+    "demo:serve": "vue-cli-service serve demo/serve.ts",
+    "demo:build": "vue-cli-service build demo/serve.ts --dest=demo-dist",
     "test": "jest",
     "build": "cross-env NODE_ENV=production rollup --config build/rollup.config.js",
     "build:ssr": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format cjs",
@@ -40,7 +40,7 @@
     "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife",
     "postbuild": "bundlesize",
     "lint": "eslint --ext \".js,.ts,.vue\"",
-    "pretty": "prettier --write \"./**/*.{js,json,html,scss,ts,yml}\"",
+    "pretty": "prettier --write \"./**/*.{js,json,html,scss,ts,vue,yml}\"",
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
