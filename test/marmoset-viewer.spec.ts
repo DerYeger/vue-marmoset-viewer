@@ -115,20 +115,6 @@ describe('MarmosetViewer', () => {
     const viewer = wrapper.find(`#${testDomRootId}`)
     expect(viewer.text()).toEqual(testFileName)
   })
-  it('cannot be resized when responsive', async () => {
-    const wrapper = mount(MarmosetViewer, {
-      propsData: {
-        src: testFileName,
-        responsive: true,
-      },
-    })
-    await flushPromises()
-    expect(resizeMock.mock.calls.length).toEqual(0)
-    // @ts-ignore
-    wrapper.vm.resize(42, 42)
-    await flushPromises()
-    expect(resizeMock.mock.calls.length).toEqual(0)
-  })
   it('resizes the MarmosetViewer', async () => {
     const wrapper = mount(MarmosetViewer, {
       propsData: {
@@ -225,14 +211,14 @@ describe('MarmosetViewer', () => {
       },
     })
     // @ts-ignore
-    const resizeSpy = jest.spyOn(wrapper.vm, 'resize')
+    const reloadSpy = jest.spyOn(wrapper.vm, 'reloadViewer')
     await flushPromises()
     wrapper.setProps({
       src: testFileName,
       width: 42,
     })
     await flushPromises()
-    expect(resizeSpy).toHaveBeenCalledTimes(1)
+    expect(reloadSpy).toHaveBeenCalledTimes(1)
   })
   it('reacts to height prop changes', async () => {
     const wrapper = mount(MarmosetViewer, {
@@ -241,13 +227,38 @@ describe('MarmosetViewer', () => {
       },
     })
     // @ts-ignore
-    const resizeSpy = jest.spyOn(wrapper.vm, 'resize')
+    const reloadSpy = jest.spyOn(wrapper.vm, 'reloadViewer')
     await flushPromises()
     wrapper.setProps({
       src: testFileName,
       height: 42,
     })
     await flushPromises()
-    expect(resizeSpy).toHaveBeenCalledTimes(1)
+    expect(reloadSpy).toHaveBeenCalledTimes(1)
+  })
+  it('does not react to size changes when responsive', async () => {
+    const wrapper = mount(MarmosetViewer, {
+      propsData: {
+        src: testFileName,
+        responsive: true,
+      },
+    })
+    // @ts-ignore
+    const reloadSpy = jest.spyOn(wrapper.vm, 'reloadViewer')
+    await flushPromises()
+    wrapper.setProps({
+      src: testFileName,
+      responsive: true,
+      height: 42,
+    })
+    await flushPromises()
+    expect(reloadSpy).toHaveBeenCalledTimes(0)
+    wrapper.setProps({
+      src: testFileName,
+      responsive: true,
+      width: 42,
+    })
+    await flushPromises()
+    expect(reloadSpy).toHaveBeenCalledTimes(0)
   })
 })

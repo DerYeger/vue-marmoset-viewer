@@ -81,27 +81,22 @@ export default defineComponent({
       }
       this.$emit('resize')
     },
-    resize(width: number, height: number) {
-      if (this.responsive) {
-        return
-      }
-      try {
-        this.viewer?.resize(width, height)
-      } catch (_) {
-        // marmoset.js throws a typeError on resize
-      }
-      this.$emit('resize')
-    }
   },
   watch: {
     src() {
       this.reloadViewer()
     },
     width() {
-      this.resize(this.width, this.height)
+      if (this.responsive) {
+        return
+      }
+      this.reloadViewer()
     },
     height() {
-      this.resize(this.width, this.height)
+      if (this.responsive) {
+        return
+      }
+      this.reloadViewer()
     },
     responsive() {
       this.reloadViewer()
@@ -109,7 +104,7 @@ export default defineComponent({
     autoStart() {
       this.reloadViewer()
     },
-  }
+  },
 })
 </script>
 
@@ -121,6 +116,6 @@ export default defineComponent({
 
 .marmoset-viewer-host__responsive {
   width: 100%;
-  height: 99%;
+  height: calc(100% - 1px);
 }
 </style>
