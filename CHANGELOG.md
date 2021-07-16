@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/DerYeger/vue-marmoset-viewer/compare/v1.3.0...v1.3.1) (2021-07-16)
+
+
+### Bug Fixes
+
+* improve resize behavior ([1308a98](https://github.com/DerYeger/vue-marmoset-viewer/commit/1308a9828fdb2413b2e54e8cb5ba086c384e8ac0))
+
 # [1.3.0](https://github.com/DerYeger/vue-marmoset-viewer/compare/v1.2.0...v1.3.0) (2021-07-15)
 
 
