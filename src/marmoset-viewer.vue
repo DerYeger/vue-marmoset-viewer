@@ -32,13 +32,15 @@ export default defineComponent({
   },
   data() {
     return {
-      resizeObserver: undefined as ResizeObserver | undefined,
       viewer: undefined as Marmoset.WebViewer | undefined,
     }
   },
   computed: {
     viewerHost(): HTMLDivElement {
       return this.$refs.marmosetViewerHost as HTMLDivElement
+    },
+    resizeObserver(): ResizeObserver {
+      return new ResizeObserver(this.onResize)
     },
   },
   mounted() {
@@ -53,7 +55,6 @@ export default defineComponent({
       this.viewerHost.appendChild(this.viewer.domRoot)
       this.viewer.onLoad = () => this.$emit('load')
       if (this.responsive) {
-        this.resizeObserver = new ResizeObserver(() => this.onResize())
         this.resizeObserver.observe(this.viewerHost)
       }
       if (this.autoStart) {
@@ -64,7 +65,7 @@ export default defineComponent({
       if (this.viewer === undefined) {
         return
       }
-      this.resizeObserver?.unobserve(this.viewerHost)
+      this.resizeObserver.unobserve(this.viewerHost)
       this.viewerHost.removeChild(this.viewer.domRoot)
       this.viewer.unload()
       this.$emit('unload')
@@ -76,7 +77,7 @@ export default defineComponent({
     onResize() {
       try {
         this.viewer?.resize(this.viewerHost.clientWidth, this.viewerHost.clientHeight)
-      } catch (_) {
+      } catch {
         // marmoset.js throws a typeError on resize
       }
       this.$emit('resize')
