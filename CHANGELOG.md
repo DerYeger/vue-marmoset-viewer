@@ -1,3 +1,11 @@
+## [1.3.2](https://github.com/DerYeger/vue-marmoset-viewer/compare/v1.3.1...v1.3.2) (2021-07-19)
+
+
+### Bug Fixes
+
+* improve handling of prop changes ([237e114](https://github.com/DerYeger/vue-marmoset-viewer/commit/237e114947a7cc9792a3364342871498fa5d3869))
+* reuse ResizeObserver ([82e8f69](https://github.com/DerYeger/vue-marmoset-viewer/commit/82e8f69e1521b9511f0006983e4f849e8bbd2353))
+
 ## [1.3.1](https://github.com/DerYeger/vue-marmoset-viewer/compare/v1.3.0...v1.3.1) (2021-07-16)
 
 
