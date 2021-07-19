@@ -82,28 +82,40 @@ export default defineComponent({
       }
       this.$emit('resize')
     },
+    resize() {
+      if (this.responsive) {
+        return
+      }
+      try {
+        this.viewer?.resize(this.width, this.height)
+      } catch {
+        // marmoset.js throws a typeError on resize
+      }
+      this.$emit('resize')
+    },
   },
   watch: {
     src() {
       this.reloadViewer()
     },
     width() {
-      if (this.responsive) {
-        return
-      }
-      this.reloadViewer()
+      this.resize()
     },
     height() {
-      if (this.responsive) {
-        return
+      this.resize()
+    },
+    responsive(val: boolean) {
+      if (val) {
+        this.resizeObserver.observe(this.viewerHost)
+      } else {
+        this.resizeObserver.unobserve(this.viewerHost)
+        this.resize()
       }
-      this.reloadViewer()
     },
-    responsive() {
-      this.reloadViewer()
-    },
-    autoStart() {
-      this.reloadViewer()
+    autoStart(val: boolean) {
+      if (val) {
+        this.viewer?.loadScene()
+      }
     },
   },
 })
