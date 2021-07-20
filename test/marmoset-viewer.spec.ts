@@ -57,7 +57,7 @@ describe('MarmosetViewer', () => {
   beforeAll(() => {
     // @ts-ignore
     loadMarmoset.mockResolvedValue(
-      new Promise((resolve) => {
+      new Promise<void>((resolve) => {
         Object.assign(global.window, {
           marmoset: {
             WebViewer: WebViewerMock,
