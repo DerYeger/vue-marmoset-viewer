@@ -76,7 +76,7 @@ or
 
 If `responsive` is set to true, the component will fill the available space of its parent.
 
-> Note: All properties of the component are reactive. Changes, except `width` or `height`, trigger a recreation of the underlying viewer.
+> Note: All properties of the component are reactive.
 
 ### Events
 
