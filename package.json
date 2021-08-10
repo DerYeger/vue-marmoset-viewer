@@ -71,7 +71,7 @@
     "eslint": "7.32.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-prettier": "3.4.0",
-    "eslint-plugin-vue": "7.15.2",
+    "eslint-plugin-vue": "7.16.0",
     "flush-promises": "1.0.2",
     "jest": "27.0.6",
     "minimist": "1.2.5",
