@@ -1,10 +1,10 @@
-import _Vue, { PluginObject, VueConstructor } from 'vue'
+import { App, Plugin } from 'vue'
 
 // Import vue component
 import component from '@/marmoset-viewer.vue'
 
 // Define typescript interfaces for installable component
-type InstallableComponent = VueConstructor<_Vue> & PluginObject<any>
+type InstallableComponent = typeof component & { install: Exclude<Plugin['install'], undefined> }
 
 // Default export is installable instance of component.
 // IIFE injects install function into component, allowing component
@@ -14,8 +14,8 @@ export default /*#__PURE__*/ ((): InstallableComponent => {
   const installable = component as unknown as InstallableComponent
 
   // Attach install function executed by Vue.use()
-  installable.install = (Vue: typeof _Vue) => {
-    Vue.component('MarmosetViewer', installable)
+  installable.install = (app: App) => {
+    app.component('MarmosetViewer', installable)
   }
   return installable
 })()

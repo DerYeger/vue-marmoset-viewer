@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 import MarmosetViewer from '@/entry'
-import Vue from 'vue'
 import { mount } from '@vue/test-utils'
 import flushPromises from 'flush-promises'
 
@@ -12,10 +11,17 @@ const TestComponent = {
 
 describe('MarmosetViewer', () => {
   beforeAll(() => {
-    Vue.use(MarmosetViewer)
+    console.warn = function (message) {
+      console.error(message)
+      throw message
+    }
   })
   it('can be installed', async () => {
-    const wrapper = mount(TestComponent)
+    const wrapper = mount(TestComponent, {
+      global: {
+        plugins: [MarmosetViewer],
+      },
+    })
     await flushPromises()
     expect(wrapper.find('.marmoset-viewer-host')).toBeDefined()
   })

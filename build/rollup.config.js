@@ -7,7 +7,10 @@ import commonjs from '@rollup/plugin-commonjs'
 import resolve from '@rollup/plugin-node-resolve'
 import replace from '@rollup/plugin-replace'
 import babel from '@rollup/plugin-babel'
+import PostCSS from 'rollup-plugin-postcss'
 import { terser } from 'rollup-plugin-terser'
+import ttypescript from 'ttypescript'
+import typescript from 'rollup-plugin-typescript2'
 import minimist from 'minimist'
 
 // Get browserslist config and remove ie from es build targets
@@ -41,20 +44,24 @@ const baseConfig = {
       'process.env.NODE_ENV': JSON.stringify('production'),
       preventAssignment: true,
     },
-    vue: {
-      css: true,
-      template: {
-        isProduction: true,
-      },
-    },
+    vue: {},
     postVue: [
       resolve({
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue'],
       }),
+      // Process only `<style module>` blocks.
+      PostCSS({
+        modules: {
+          generateScopedName: '[local]___[hash:base64:5]',
+        },
+        include: /&module=.*\.css$/,
+      }),
+      // Process all `<style>` blocks except `<style module>`.
+      PostCSS({ include: /(?<!&module=.*)\.css$/ }),
       commonjs(),
     ],
     babel: {
-      exclude: 'node_modules/**',
+      exclude: ['node_modules/**', 'demo/*.ts', 'test/**/*.ts'],
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue'],
       babelHelpers: 'bundled',
     },
@@ -85,7 +92,7 @@ if (!argv.format || argv.format === 'es') {
     input: 'src/entry.esm.ts',
     external,
     output: {
-      file: 'dist/marmoset-viewer.esm.js',
+      file: 'dist/vue-marmoset-viewer.esm.js',
       format: 'esm',
       exports: 'named',
     },
@@ -94,6 +101,13 @@ if (!argv.format || argv.format === 'es') {
       ...baseConfig.plugins.preVue,
       vue(baseConfig.plugins.vue),
       ...baseConfig.plugins.postVue,
+      // Only use typescript for declarations - babel will
+      // do actual js transformations
+      typescript({
+        typescript: ttypescript,
+        useTsconfigDeclarationDir: true,
+        emitDeclarationOnly: true,
+      }),
       babel({
         ...baseConfig.plugins.babel,
         presets: [
@@ -117,7 +131,7 @@ if (!argv.format || argv.format === 'cjs') {
     external,
     output: {
       compact: true,
-      file: 'dist/marmoset-viewer.ssr.js',
+      file: 'dist/vue-marmoset-viewer.ssr.js',
       format: 'cjs',
       name: 'MarmosetViewer',
       exports: 'auto',
@@ -126,13 +140,7 @@ if (!argv.format || argv.format === 'cjs') {
     plugins: [
       replace(baseConfig.plugins.replace),
       ...baseConfig.plugins.preVue,
-      vue({
-        ...baseConfig.plugins.vue,
-        template: {
-          ...baseConfig.plugins.vue.template,
-          optimizeSSR: true,
-        },
-      }),
+      vue(baseConfig.plugins.vue),
       ...baseConfig.plugins.postVue,
       babel(baseConfig.plugins.babel),
     ],
@@ -146,7 +154,7 @@ if (!argv.format || argv.format === 'iife') {
     external,
     output: {
       compact: true,
-      file: 'dist/marmoset-viewer.min.js',
+      file: 'dist/vue-marmoset-viewer.min.js',
       format: 'iife',
       name: 'MarmosetViewer',
       exports: 'auto',

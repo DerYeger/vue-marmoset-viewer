@@ -43,6 +43,8 @@
 
 ## Installation
 
+> v1.x.x supports Vue 2, while v2.0.0 and onward target Vue 3.
+
 ```bash
 # yarn
 $ yarn add vue-marmoset-viewer
@@ -52,6 +54,19 @@ $ npm install vue-marmoset-viewer
 ```
 
 ## Usage
+
+### Vue 3
+
+```typescript
+import { createApp } from "vue";
+import MarmosetViewer from 'vue-marmoset-viewer'
+
+const app = createApp()
+
+app.use(MarmosetViewer)
+```
+
+### Vue 2
 
 ```typescript
 import Vue from 'vue'
@@ -85,6 +100,8 @@ If `responsive` is set to true, the component will fill the available space of i
 - `resize`: Emitted when the underlying viewer has been resized manually or automatically, when the `responsive` property is set to `true`.
 
 ### Nuxt
+
+> Nuxt 2 is not supported by v2.0.0 and onward.
 
 1. Create the file `plugins/marmosetViewer.ts` with the following content.
 

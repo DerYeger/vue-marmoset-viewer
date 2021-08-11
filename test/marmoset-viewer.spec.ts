@@ -81,7 +81,7 @@ describe('MarmosetViewer', () => {
       height: 31,
     }
     const wrapper = mount(MarmosetViewer, {
-      propsData: {
+      props: {
         src: testFileName,
         ...options,
       },
@@ -97,20 +97,20 @@ describe('MarmosetViewer', () => {
   })
   it('unloads the MarmosetViewer', async () => {
     const wrapper = mount(MarmosetViewer, {
-      propsData: {
+      props: {
         src: testFileName,
       },
     })
     await flushPromises()
     expect(unloadMock.mock.calls.length).toEqual(0)
     expect(wrapper.emitted().unload).toBeUndefined()
-    wrapper.destroy()
+    wrapper.unmount()
     expect(unloadMock.mock.calls.length).toEqual(1)
     expect(wrapper.emitted().unload?.length).toBe(1)
   })
   it('can be responsive', async () => {
     const wrapper = mount(MarmosetViewer, {
-      propsData: {
+      props: {
         src: testFileName,
         responsive: true,
       },
@@ -124,7 +124,7 @@ describe('MarmosetViewer', () => {
   })
   it('resizes the MarmosetViewer', async () => {
     const wrapper = mount(MarmosetViewer, {
-      propsData: {
+      props: {
         src: testFileName,
         responsive: true,
       },
@@ -140,7 +140,7 @@ describe('MarmosetViewer', () => {
   it('unobserves the ResizeObserver', async () => {
     expect(observeMock.mock.calls.length).toEqual(0)
     const wrapper = mount(MarmosetViewer, {
-      propsData: {
+      props: {
         src: testFileName,
         responsive: true,
       },
@@ -149,14 +149,14 @@ describe('MarmosetViewer', () => {
     expect(observeMock.mock.calls.length).toEqual(1)
     expect(unobserveMock.mock.calls.length).toEqual(0)
     expect(wrapper.emitted().unload).toBeUndefined()
-    wrapper.destroy()
+    wrapper.unmount()
     expect(unobserveMock.mock.calls.length).toEqual(1)
     expect(wrapper.emitted().unload?.length).toBe(1)
   })
   it('supports autostart', async () => {
     expect(loadSceneMock.mock.calls.length).toEqual(0)
     mount(MarmosetViewer, {
-      propsData: {
+      props: {
         src: testFileName,
         autoStart: true,
       },
@@ -166,14 +166,14 @@ describe('MarmosetViewer', () => {
   })
   it('reacts to src prop changes', async () => {
     const wrapper = mount(MarmosetViewer, {
-      propsData: {
+      props: {
         src: testFileName,
       },
     })
     // @ts-ignore
     const reloadSpy = jest.spyOn(wrapper.vm, 'reloadViewer')
     await flushPromises()
-    wrapper.setProps({
+    await wrapper.setProps({
       src: 'newSrc',
     })
     await flushPromises()
@@ -181,21 +181,21 @@ describe('MarmosetViewer', () => {
   })
   it('reacts to responsive prop changes', async () => {
     const wrapper = mount(MarmosetViewer, {
-      propsData: {
+      props: {
         src: testFileName,
       },
     })
     expect(observeMock.mock.calls.length).toEqual(0)
     expect(resizeMock.mock.calls.length).toEqual(0)
     await flushPromises()
-    wrapper.setProps({
+    await wrapper.setProps({
       src: testFileName,
       responsive: true,
     })
     await flushPromises()
     expect(observeMock.mock.calls.length).toEqual(1)
     expect(unobserveMock.mock.calls.length).toEqual(0)
-    wrapper.setProps({
+    await wrapper.setProps({
       src: testFileName,
       responsive: false,
     })
@@ -205,13 +205,13 @@ describe('MarmosetViewer', () => {
   })
   it('reacts to autoStart prop changes', async () => {
     const wrapper = mount(MarmosetViewer, {
-      propsData: {
+      props: {
         src: testFileName,
       },
     })
     expect(loadSceneMock.mock.calls.length).toEqual(0)
     await flushPromises()
-    wrapper.setProps({
+    await wrapper.setProps({
       src: testFileName,
       autoStart: true,
     })
@@ -220,14 +220,14 @@ describe('MarmosetViewer', () => {
   })
   it('reacts to width prop changes', async () => {
     const wrapper = mount(MarmosetViewer, {
-      propsData: {
+      props: {
         src: testFileName,
       },
     })
     expect(resizeMock.mock.calls.length).toEqual(0)
     expect(wrapper.emitted().resize).toBeUndefined()
     await flushPromises()
-    wrapper.setProps({
+    await wrapper.setProps({
       src: testFileName,
       width: 42,
     })
@@ -237,14 +237,14 @@ describe('MarmosetViewer', () => {
   })
   it('reacts to height prop changes', async () => {
     const wrapper = mount(MarmosetViewer, {
-      propsData: {
+      props: {
         src: testFileName,
       },
     })
     expect(resizeMock.mock.calls.length).toEqual(0)
     expect(wrapper.emitted().resize).toBeUndefined()
     await flushPromises()
-    wrapper.setProps({
+    await wrapper.setProps({
       src: testFileName,
       height: 42,
     })
@@ -254,7 +254,7 @@ describe('MarmosetViewer', () => {
   })
   it('does not react to size changes when responsive', async () => {
     const wrapper = mount(MarmosetViewer, {
-      propsData: {
+      props: {
         src: testFileName,
         responsive: true,
       },
@@ -262,14 +262,14 @@ describe('MarmosetViewer', () => {
     // @ts-ignore
     const reloadSpy = jest.spyOn(wrapper.vm, 'reloadViewer')
     await flushPromises()
-    wrapper.setProps({
+    await wrapper.setProps({
       src: testFileName,
       responsive: true,
       height: 42,
     })
     await flushPromises()
     expect(reloadSpy).toHaveBeenCalledTimes(0)
-    wrapper.setProps({
+    await wrapper.setProps({
       src: testFileName,
       responsive: true,
       width: 42,

@@ -3,9 +3,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent } from 'vue'
 import { loadMarmoset, marmosetViewerDefaultOptions } from '@/marmoset'
-import { Marmoset } from 'marmoset-viewer'
+import { Marmoset } from '@/marmoset'
 
 export default defineComponent({
   props: {
@@ -46,7 +46,7 @@ export default defineComponent({
   mounted() {
     loadMarmoset().then(() => this.loadViewer())
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.unloadViewer()
   },
   methods: {
