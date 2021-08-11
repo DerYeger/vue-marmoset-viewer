@@ -1,3 +1,13 @@
+# [2.0.0](https://github.com/DerYeger/vue-marmoset-viewer/compare/v1.3.2...v2.0.0) (2021-08-11)
+
+
+* feat(vue)!: migrate to vue 3 ([34ac069](https://github.com/DerYeger/vue-marmoset-viewer/commit/34ac069350c79f6f2c2f974c899ed0ee85ef8159))
+
+
+### BREAKING CHANGES
+
+* Migrate to Vue 3
+
 ## [1.3.2](https://github.com/DerYeger/vue-marmoset-viewer/compare/v1.3.1...v1.3.2) (2021-07-19)
 
 
