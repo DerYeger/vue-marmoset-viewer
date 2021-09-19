@@ -43,4 +43,6 @@ jobs:
         with:
           commit_message: 'fix(release): schedule release'
           commit_options: '--no-verify --allow-empty'
+          commit_user_name: Jan Müller
+          commit_user_email: janmueller3698@gmail.com
           skip_dirty_check: true
