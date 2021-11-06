@@ -1,3 +1,10 @@
+## [2.0.7](https://github.com/DerYeger/vue-marmoset-viewer/compare/v2.0.6...v2.0.7) (2021-11-06)
+
+
+### Bug Fixes
+
+* **release:** schedule release ([409a558](https://github.com/DerYeger/vue-marmoset-viewer/commit/409a55882d1a5e033fb1229842e7a7ae4a62f87e))
+
 ## [2.0.6](https://github.com/DerYeger/vue-marmoset-viewer/compare/v2.0.5...v2.0.6) (2021-10-29)
 
 
