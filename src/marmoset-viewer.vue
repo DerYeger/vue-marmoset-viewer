@@ -7,6 +7,14 @@ import { defineComponent } from 'vue'
 import { loadMarmoset, marmosetViewerDefaultOptions } from '@/marmoset'
 import { Marmoset } from '@/marmoset'
 
+function debounce(cb: () => void) {
+  let h = 0
+  return () => {
+    window.clearTimeout(h)
+    h = window.setTimeout(() => cb())
+  }
+}
+
 export default defineComponent({
   props: {
     src: {
@@ -40,7 +48,7 @@ export default defineComponent({
       return this.$refs.marmosetViewerHost as HTMLDivElement
     },
     resizeObserver(): ResizeObserver {
-      return new ResizeObserver(this.onResize)
+      return new ResizeObserver(debounce(() => this.onResize()))
     },
   },
   mounted() {
