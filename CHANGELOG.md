@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/DerYeger/vue-marmoset-viewer/compare/v2.0.18...v2.1.0) (2022-01-21)
+
+
+### Features
+
+* debounce resize ([a4479fe](https://github.com/DerYeger/vue-marmoset-viewer/commit/a4479fe0b7afab864fc6b7fae6ba2c113167de61))
+
 ## [2.0.18](https://github.com/DerYeger/vue-marmoset-viewer/compare/v2.0.17...v2.0.18) (2022-01-21)
 
 
