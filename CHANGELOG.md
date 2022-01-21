@@ -1,3 +1,10 @@
+## [2.0.18](https://github.com/DerYeger/vue-marmoset-viewer/compare/v2.0.17...v2.0.18) (2022-01-21)
+
+
+### Bug Fixes
+
+* **deps:** update `bundlesize` to `bundlesize2` ([2578a70](https://github.com/DerYeger/vue-marmoset-viewer/commit/2578a7022eef000a9b5d75509980611b3b367b2f))
+
 ## [2.0.17](https://github.com/DerYeger/vue-marmoset-viewer/compare/v2.0.16...v2.0.17) (2022-01-21)
 
 
