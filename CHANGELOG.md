@@ -1,3 +1,10 @@
+## [2.0.17](https://github.com/DerYeger/vue-marmoset-viewer/compare/v2.0.16...v2.0.17) (2022-01-21)
+
+
+### Bug Fixes
+
+* use correct entry points ([2fa501c](https://github.com/DerYeger/vue-marmoset-viewer/commit/2fa501ce80cb9c2c89708f33dff33dfbc212b95c))
+
 ## [2.0.16](https://github.com/DerYeger/vue-marmoset-viewer/compare/v2.0.15...v2.0.16) (2022-01-17)
 
 
