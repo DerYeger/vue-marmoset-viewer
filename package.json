@@ -19,10 +19,10 @@
     "marmoset",
     "3d"
   ],
-  "main": "dist/marmoset-viewer.ssr.js",
-  "browser": "dist/marmoset-viewer.esm.js",
-  "module": "dist/marmoset-viewer.esm.js",
-  "unpkg": "dist/marmoset-viewer.min.js",
+  "main": "dist/vue-marmoset-viewer.ssr.js",
+  "browser": "dist/vue-marmoset-viewer.esm.js",
+  "module": "dist/vue-marmoset-viewer.esm.js",
+  "unpkg": "dist/vue-marmoset-viewer.min.js",
   "types": "dist/types/src/entry.esm.d.ts",
   "files": [
     "dist/*",
