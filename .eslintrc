@@ -10,11 +10,12 @@
     "eslint:recommended",
     "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:vue/base"
+    "plugin:vue/vue3-recommended"
   ],
-  "parser": "@typescript-eslint/parser",
+  "parser": "vue-eslint-parser",
   "parserOptions": {
     "ecmaVersion": 2020,
+    "parser": "@typescript-eslint/parser",
     "sourceType": "module"
   },
   "overrides": [
@@ -24,5 +25,10 @@
         "jest": true
       }
     }
-  ]
+  ],
+  "rules": {
+    "vue/max-attributes-per-line": "off",
+    "vue/html-self-closing": "off",
+    "vue/singleline-html-element-content-newline": "off"
+  }
 }

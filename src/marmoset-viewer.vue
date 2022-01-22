@@ -1,19 +1,17 @@
 <template>
-  <div ref="marmosetViewerHost" class="marmoset-viewer-host" :class="{ 'marmoset-viewer-host__responsive': responsive }" />
+  <div
+    ref="marmosetViewerHost"
+    class="marmoset-viewer-host"
+    :class="{ 'marmoset-viewer-host__responsive': responsive }"
+    :style="{ width: responsive ? '100%' : 'fit-content', height: responsive ? 'calc(100% - 1px)' : 'fit-content' }"
+  />
 </template>
 
 <script lang="ts">
+import { debounce } from '@yeger/debounce'
 import { defineComponent } from 'vue'
 import { loadMarmoset, marmosetViewerDefaultOptions } from '@/marmoset'
 import { Marmoset } from '@/marmoset'
-
-function debounce(cb: () => void) {
-  let h = 0
-  return () => {
-    window.clearTimeout(h)
-    h = window.setTimeout(() => cb())
-  }
-}
 
 export default defineComponent({
   props: {
@@ -38,6 +36,7 @@ export default defineComponent({
       default: false,
     },
   },
+  emits: ['load', 'resize', 'unload'],
   data() {
     return {
       viewer: undefined as Marmoset.WebViewer | undefined,
@@ -49,6 +48,30 @@ export default defineComponent({
     },
     resizeObserver(): ResizeObserver {
       return new ResizeObserver(debounce(() => this.onResize()))
+    },
+  },
+  watch: {
+    src() {
+      this.reloadViewer()
+    },
+    width() {
+      this.resize()
+    },
+    height() {
+      this.resize()
+    },
+    responsive(val: boolean) {
+      if (val) {
+        this.resizeObserver.observe(this.viewerHost)
+      } else {
+        this.resizeObserver.unobserve(this.viewerHost)
+        this.resize()
+      }
+    },
+    autoStart(val: boolean) {
+      if (val) {
+        this.viewer?.loadScene()
+      }
     },
   },
   mounted() {
@@ -102,41 +125,5 @@ export default defineComponent({
       this.$emit('resize')
     },
   },
-  watch: {
-    src() {
-      this.reloadViewer()
-    },
-    width() {
-      this.resize()
-    },
-    height() {
-      this.resize()
-    },
-    responsive(val: boolean) {
-      if (val) {
-        this.resizeObserver.observe(this.viewerHost)
-      } else {
-        this.resizeObserver.unobserve(this.viewerHost)
-        this.resize()
-      }
-    },
-    autoStart(val: boolean) {
-      if (val) {
-        this.viewer?.loadScene()
-      }
-    },
-  },
 })
 </script>
-
-<style>
-.marmoset-viewer-host {
-  width: fit-content;
-  height: fit-content;
-}
-
-.marmoset-viewer-host__responsive {
-  width: 100%;
-  height: calc(100% - 1px);
-}
-</style>

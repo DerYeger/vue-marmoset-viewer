@@ -55,7 +55,7 @@ function mockResizeObserver() {
 
 describe('MarmosetViewer', () => {
   beforeAll(() => {
-    // @ts-ignore
+    // @ts-expect-error Types are not configured
     loadMarmoset.mockResolvedValue(
       new Promise<void>((resolve) => {
         Object.assign(global.window, {
@@ -132,7 +132,7 @@ describe('MarmosetViewer', () => {
     await flushPromises()
     expect(resizeMock.mock.calls.length).toEqual(0)
     expect(wrapper.emitted().resize).toBeUndefined()
-    // @ts-ignore
+
     wrapper.vm.onResize()
     expect(resizeMock.mock.calls.length).toEqual(1)
     expect(wrapper.emitted().resize?.length).toBe(1)
@@ -170,7 +170,6 @@ describe('MarmosetViewer', () => {
         src: testFileName,
       },
     })
-    // @ts-ignore
     const reloadSpy = jest.spyOn(wrapper.vm, 'reloadViewer')
     await flushPromises()
     await wrapper.setProps({
@@ -259,7 +258,6 @@ describe('MarmosetViewer', () => {
         responsive: true,
       },
     })
-    // @ts-ignore
     const reloadSpy = jest.spyOn(wrapper.vm, 'reloadViewer')
     await flushPromises()
     await wrapper.setProps({
