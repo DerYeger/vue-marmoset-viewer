@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/DerYeger/vue-marmoset-viewer/compare/v2.1.0...v3.0.0) (2022-01-22)
+
+
+### Features
+
+* use vite for bundling ([#24](https://github.com/DerYeger/vue-marmoset-viewer/issues/24)) ([24ba64f](https://github.com/DerYeger/vue-marmoset-viewer/commit/24ba64f04fb98cd444d2c78056fd736ca4ae47cc))
+
+
+### BREAKING CHANGES
+
+* Default export is now a named export
+
 # [2.1.0](https://github.com/DerYeger/vue-marmoset-viewer/compare/v2.0.18...v2.1.0) (2022-01-21)
 
 
