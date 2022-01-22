@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import MarmosetViewer from '@/entry'
+import { MarmosetViewer } from '@/index'
 import { mount } from '@vue/test-utils'
 import flushPromises from 'flush-promises'
 

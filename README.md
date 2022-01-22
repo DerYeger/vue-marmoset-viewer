@@ -59,7 +59,7 @@ $ npm install vue-marmoset-viewer
 
 ```typescript
 import { createApp } from "vue";
-import MarmosetViewer from 'vue-marmoset-viewer'
+import { MarmosetViewer } from 'vue-marmoset-viewer'
 
 const app = createApp()
 

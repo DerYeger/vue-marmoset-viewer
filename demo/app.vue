@@ -6,29 +6,29 @@
         <section id="settings">
           <div class="row">
             <label>Model</label>
-            <button v-for="file of files" :key="file" @click="src = file" :disabled="src === file">{{ capitalize(file) }}</button>
+            <button v-for="file of files" :key="file" :disabled="src === file" @click="src = file">{{ capitalize(file) }}</button>
           </div>
           <div>
             <label for="autostart">Autostart</label>
-            <input id="autostart" type="checkbox" v-model="autoStart" />
+            <input id="autostart" v-model="autoStart" type="checkbox" />
           </div>
           <div>
             <label for="responsive">Responsive</label>
-            <input id="responsive" type="checkbox" v-model="responsive" />
+            <input id="responsive" v-model="responsive" type="checkbox" />
           </div>
           <div>
             <label for="width">
               Width
               <span v-show="!responsive">({{ width }}px)</span>
             </label>
-            <input id="width" type="range" min="200" max="800" v-model="width" :disabled="responsive" />
+            <input id="width" v-model="width" type="range" min="200" max="800" :disabled="responsive" />
           </div>
           <div>
             <label for="height">
               Height
               <span v-show="!responsive">({{ height }}px)</span>
             </label>
-            <input id="height" type="range" min="200" max="600" v-model="height" :disabled="responsive" />
+            <input id="height" v-model="height" :disabled="responsive" max="600" min="200" type="range" />
           </div>
         </section>
         <section id="emits">
@@ -39,7 +39,7 @@
           <textarea id="emitLog" v-model="emitLog" readonly />
         </section>
       </div>
-      <div style="flex: 1">
+      <div style="flex-grow: 1">
         <marmoset-viewer
           :src="`${src}.mview`"
           :auto-start="autoStart"
@@ -63,7 +63,7 @@ import DemoHeader from './demo-header.vue'
 import MarmosetViewer from '@/marmoset-viewer.vue'
 
 export default defineComponent({
-  name: 'ServeDev',
+  name: 'App',
   components: {
     DemoHeader,
     DemoFooter,
@@ -88,6 +88,14 @@ export default defineComponent({
       return this.emits.join('\n')
     },
   },
+  created() {
+    document.title = 'vue-marmoset-viewer'
+    document.documentElement.setAttribute('lang', 'en')
+    const metaElement = document.createElement('meta')
+    metaElement.setAttribute('name', 'description')
+    metaElement.content = 'A responsive and configurable Marmoset Viewer component for Vue.'
+    document.getElementsByTagName('head')[0].appendChild(metaElement)
+  },
   methods: {
     addEmit(emit: string) {
       this.emits.unshift(`${new Date().toLocaleTimeString()}: ${emit}`)
@@ -97,14 +105,6 @@ export default defineComponent({
       value = value.toString()
       return value.charAt(0).toUpperCase() + value.slice(1)
     },
-  },
-  created() {
-    document.title = 'vue-marmoset-viewer'
-    document.documentElement.setAttribute('lang', 'en')
-    const metaElement = document.createElement('meta')
-    metaElement.setAttribute('name', 'description')
-    metaElement.content = 'A responsive and configurable Marmoset Viewer component for Vue.'
-    document.getElementsByTagName('head')[0].appendChild(metaElement)
   },
 })
 </script>

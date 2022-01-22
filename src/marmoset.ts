@@ -56,6 +56,7 @@ export declare interface Marmoset {
    * @param onError Callback for error scenarios.
    * @param image Target image buffer. If not present, a new buffer will be created.
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fetchThumbnail(src: string, onLoad: (image: any) => void, onError?: () => void, image?: any): void
 
   /**
@@ -79,6 +80,7 @@ export declare interface Marmoset {
   noUserInterface?: boolean
 }
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export declare namespace Marmoset {
   export class WebViewer {
     /**
