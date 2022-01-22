@@ -16,12 +16,12 @@ jobs:
       - name: Generate files
         run: yarn demo:build
       - name: Create 404.html file
-        run: cp ./demo-dist/index.html ./demo-dist/404.html
+        run: cp ./demo/dist/index.html ./demo/dist/404.html
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.2.2
         with:
           branch: gh-pages
-          folder: ./demo-dist
+          folder: ./demo/dist
           clean: true
           single-commit: true
           git-config-name: Jan Müller
