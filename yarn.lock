@@ -891,10 +891,10 @@
     source-map "0.5.6"
     tsconfig "^7.0.0"
 
-"@yeger/debounce@1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@yeger/debounce/-/debounce-1.0.5.tgz#482064969fa0ea53a1e05765ac028c1ba3e614a2"
-  integrity sha512-eCemKCbVg6RdN8NWjWc1qtJXJDdWHdYPinNO4J68/OJywYnRdZcA9SIXTcMUL/Wpg/89cchfaAfWCfD7d+kGGg==
+"@yeger/debounce@1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@yeger/debounce/-/debounce-1.0.6.tgz#f9938f651337d226f1099e4959028e0077efbfac"
+  integrity sha512-anzoorCVRzaP7HrX3tZABWZavc8PTVukr1H+TGzXRMvNo1V5U4wjsy9TQE/BheQFVLxVyZxEXRz+Hqq0nrvGPg==
 
 abab@^2.0.3, abab@^2.0.5:
   version "2.0.5"
