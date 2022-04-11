@@ -1,3 +1,10 @@
+## [3.0.18](https://github.com/DerYeger/vue-marmoset-viewer/compare/v3.0.17...v3.0.18) (2022-04-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @yeger/debounce to v1.0.11 ([4f6e143](https://github.com/DerYeger/vue-marmoset-viewer/commit/4f6e14382e21086f4dcb8d6320ccab7566ef9b5b))
+
 ## [3.0.17](https://github.com/DerYeger/vue-marmoset-viewer/compare/v3.0.16...v3.0.17) (2022-04-11)
 
 
