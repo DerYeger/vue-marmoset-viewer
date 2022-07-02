@@ -1,6 +1,6 @@
 {
   "name": "vue-marmoset-viewer",
-  "version": "3.0.33",
+  "version": "3.0.34",
   "description": "A responsive and configurable Marmoset Viewer component for Vue.",
   "license": "MIT",
   "repository": "github:DerYeger/vue-marmoset-viewer",
