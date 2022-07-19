@@ -50,8 +50,8 @@
   "devDependencies": {
     "@types/jest": "27.4.0",
     "@types/resize-observer-browser": "0.1.7",
-    "@typescript-eslint/eslint-plugin": "5.30.6",
-    "@typescript-eslint/parser": "5.30.6",
+    "@typescript-eslint/eslint-plugin": "5.30.7",
+    "@typescript-eslint/parser": "5.30.7",
     "@vitejs/plugin-vue": "3.0.1",
     "@vue/compiler-sfc": "3.2.37",
     "@vue/test-utils": "2.0.2",
