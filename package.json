@@ -45,7 +45,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@yeger/debounce": "1.0.24"
+    "@yeger/debounce": "1.0.25"
   },
   "devDependencies": {
     "@types/jest": "27.4.0",
