@@ -1005,10 +1005,10 @@
     source-map "0.5.6"
     tsconfig "^7.0.0"
 
-"@yeger/debounce@1.0.28":
-  version "1.0.28"
-  resolved "https://registry.yarnpkg.com/@yeger/debounce/-/debounce-1.0.28.tgz#58897ca2f197a8632bafba9c2fee0b04b7b2f689"
-  integrity sha512-/UsMIKnA1HAeBu6u9P0XX+2VOO1QgmPnNOkCnKNAwbpfd8a7d2bKyOPhh/db7jdXSuMhTfRpbfti1yHGhsqQzA==
+"@yeger/debounce@1.0.29":
+  version "1.0.29"
+  resolved "https://registry.yarnpkg.com/@yeger/debounce/-/debounce-1.0.29.tgz#fc0e549daaa899a33590cda3cf0447f417fac3e8"
+  integrity sha512-EfOEzTWeNRh0Ge96GAgqpepXcRHqU3M5a5gHroUkvoentB+ndPK1kGntu4AgSEsQA0W6DqJv6wjuM3L0LP7i7w==
 
 abab@^2.0.3, abab@^2.0.5:
   version "2.0.6"
@@ -3914,10 +3914,10 @@ vite-plugin-dts@1.4.1:
     fs-extra "^10.0.1"
     ts-morph "^14.0.0"
 
-vite@3.0.7:
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-3.0.7.tgz#f1e379857e9c5d652126f8b20d371e1365eb700f"
-  integrity sha512-dILhvKba1mbP1wCezVQx/qhEK7/+jVn9ciadEcyKMMhZpsuAi/eWZfJRMkmYlkSFG7Qq9NvJbgFq4XOBxugJsA==
+vite@3.0.8:
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-3.0.8.tgz#aa095ad8e3e5da46d9ec7e878f262678965d6531"
+  integrity sha512-AOZ4eN7mrkJiOLuw8IA7piS4IdOQyQCA81GxGsAQvAZzMRi9ZwGB3TOaYsj4uLAWK46T5L4AfQ6InNGlxX30IQ==
   dependencies:
     esbuild "^0.14.47"
     postcss "^8.4.16"
