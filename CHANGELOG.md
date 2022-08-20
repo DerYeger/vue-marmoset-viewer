@@ -1,3 +1,10 @@
+## [3.0.48](https://github.com/DerYeger/vue-marmoset-viewer/compare/v3.0.47...v3.0.48) (2022-08-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency vite to v3.0.9 ([46b769d](https://github.com/DerYeger/vue-marmoset-viewer/commit/46b769d7a76839b90385ed56b1b962ce77cfdd16))
+
 ## [3.0.47](https://github.com/DerYeger/vue-marmoset-viewer/compare/v3.0.46...v3.0.47) (2022-08-19)
 
 
