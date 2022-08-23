@@ -1005,10 +1005,10 @@
     source-map "0.5.6"
     tsconfig "^7.0.0"
 
-"@yeger/debounce@1.0.32":
-  version "1.0.32"
-  resolved "https://registry.yarnpkg.com/@yeger/debounce/-/debounce-1.0.32.tgz#4869983f0365bae084656822ecc94f56b21612a3"
-  integrity sha512-STDPLk3Puzx4cflFYs/ra4NZcejLmHKA2ePkMjuGNMuVzddLvBRO7Dc2+AwM5xvc00vTA9sXEo7LW8oY9FhFew==
+"@yeger/debounce@1.0.33":
+  version "1.0.33"
+  resolved "https://registry.yarnpkg.com/@yeger/debounce/-/debounce-1.0.33.tgz#e47ac653d6ca7770cf14c1e5d5ff3303c96a2977"
+  integrity sha512-X7SuAHY2FZR4iTxWSqVG/0kTu1I0EdIcknp5qkQXSvnMNqg7Pd4/E02sKOsuI6ddyzasHkvpQbhooiF78rN2Tg==
 
 abab@^2.0.3, abab@^2.0.5:
   version "2.0.6"
@@ -1782,10 +1782,10 @@ eslint-plugin-prettier@4.2.1:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-eslint-plugin-vue@9.3.0:
-  version "9.3.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-9.3.0.tgz#c3f5ce515dae387e062428725c5cf96098d9da0b"
-  integrity sha512-iscKKkBZgm6fGZwFt6poRoWC0Wy2dQOlwUPW++CiPoQiw1enctV2Hj5DBzzjJZfyqs+FAXhgzL4q0Ww03AgSmQ==
+eslint-plugin-vue@9.4.0:
+  version "9.4.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-9.4.0.tgz#31c2d9002b5bb437b351a5feffdf37c4397e5cb9"
+  integrity sha512-Nzz2QIJ8FG+rtJaqT/7/ru5ie2XgT9KCudkbN0y3uFYhQ41nuHEaboLAiqwMcK006hZPQv/rVMRhUIwEGhIvfQ==
   dependencies:
     eslint-utils "^3.0.0"
     natural-compare "^1.4.0"
