@@ -1,3 +1,10 @@
+## [3.0.54](https://github.com/DerYeger/vue-marmoset-viewer/compare/v3.0.53...v3.0.54) (2022-08-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency typescript to v4.8.2 ([8e119e6](https://github.com/DerYeger/vue-marmoset-viewer/commit/8e119e64bb66fdb749aa7718835f1b7ac3ccc1b7))
+
 ## [3.0.53](https://github.com/DerYeger/vue-marmoset-viewer/compare/v3.0.52...v3.0.53) (2022-08-25)
 
 
