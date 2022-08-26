@@ -45,7 +45,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@yeger/debounce": "1.0.34"
+    "@yeger/debounce": "1.0.35"
   },
   "devDependencies": {
     "@types/jest": "27.4.0",
@@ -58,7 +58,7 @@
     "@vue/vue3-jest": "27.0.0",
     "bundlesize2": "0.0.31",
     "cross-env": "7.0.3",
-    "eslint": "8.22.0",
+    "eslint": "8.23.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-vue": "9.4.0",
