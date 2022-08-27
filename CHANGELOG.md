@@ -1,3 +1,10 @@
+## [3.0.55](https://github.com/DerYeger/vue-marmoset-viewer/compare/v3.0.54...v3.0.55) (2022-08-27)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([1570e0d](https://github.com/DerYeger/vue-marmoset-viewer/commit/1570e0d8d9b90b480033911723d0a14d71b74908))
+
 ## [3.0.54](https://github.com/DerYeger/vue-marmoset-viewer/compare/v3.0.53...v3.0.54) (2022-08-26)
 
 
