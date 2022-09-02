@@ -1009,10 +1009,10 @@
     source-map "0.5.6"
     tsconfig "^7.0.0"
 
-"@yeger/debounce@1.0.35":
-  version "1.0.35"
-  resolved "https://registry.yarnpkg.com/@yeger/debounce/-/debounce-1.0.35.tgz#615db73d1d58bdb58669240b3a13d56818db0f28"
-  integrity sha512-2j3PVkTcGtR4N2x91rTtggOYLK6c9xEXS9TPZAm8FZPW34iiWI+6dcvd/CW08kUY31zKNyMUPBm8XnHk4AbMmg==
+"@yeger/debounce@1.0.36":
+  version "1.0.36"
+  resolved "https://registry.yarnpkg.com/@yeger/debounce/-/debounce-1.0.36.tgz#844370a10e7a7497cde338dc165872c3e529bde1"
+  integrity sha512-8skZtDUmBHLG7zoETgyywRKonKeCTi6qRHtlg6xnFzqK4fAZ2el94PW0cUTAnWEtaKBkzCobhMh54pKIl3VzDw==
 
 abab@^2.0.3, abab@^2.0.5:
   version "2.0.6"
