@@ -1,3 +1,10 @@
+## [3.0.67](https://github.com/DerYeger/vue-marmoset-viewer/compare/v3.0.66...v3.0.67) (2022-10-15)
+
+
+### Bug Fixes
+
+* **deps:** update vue monorepo to v3.2.41 ([468daf1](https://github.com/DerYeger/vue-marmoset-viewer/commit/468daf1744651e74dab8c445f1b6e6eba0311f8c))
+
 ## [3.0.66](https://github.com/DerYeger/vue-marmoset-viewer/compare/v3.0.65...v3.0.66) (2022-10-15)
 
 
