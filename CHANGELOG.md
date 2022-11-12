@@ -1,3 +1,10 @@
+## [3.0.74](https://github.com/DerYeger/vue-marmoset-viewer/compare/v3.0.73...v3.0.74) (2022-11-12)
+
+
+### Bug Fixes
+
+* **deps:** update typescript-eslint monorepo to v5.42.1 ([4486dae](https://github.com/DerYeger/vue-marmoset-viewer/commit/4486daeee18c87fd1a8a64c91b4dbdaf82e3adea))
+
 ## [3.0.73](https://github.com/DerYeger/vue-marmoset-viewer/compare/v3.0.72...v3.0.73) (2022-11-05)
 
 
