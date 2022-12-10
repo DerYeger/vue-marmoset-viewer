@@ -1,3 +1,11 @@
+## [3.0.84](https://github.com/DerYeger/vue-marmoset-viewer/compare/v3.0.83...v3.0.84) (2022-12-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @vitejs/plugin-vue to v4 ([#35](https://github.com/DerYeger/vue-marmoset-viewer/issues/35)) ([d0a166f](https://github.com/DerYeger/vue-marmoset-viewer/commit/d0a166f5c0d4c3b0f09c5c3481bde99c1d24f19c))
+* **deps:** update dependency vite to v4 ([#36](https://github.com/DerYeger/vue-marmoset-viewer/issues/36)) ([7bec639](https://github.com/DerYeger/vue-marmoset-viewer/commit/7bec639c72c98432a0decd540b0b5a27be31015e))
+
 ## [3.0.83](https://github.com/DerYeger/vue-marmoset-viewer/compare/v3.0.82...v3.0.83) (2022-12-10)
 
 
